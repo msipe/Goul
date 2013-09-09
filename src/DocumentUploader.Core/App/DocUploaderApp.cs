@@ -11,9 +11,8 @@ namespace DocumentUploader.Core.App {
       ICommand command;
       if (mIndex.TryGetValue(args[0], out command))
         command.Execute(args);
-      else {
+      else
         mIndex["unknown"].Execute(args);
-      }
     }
 
     private readonly IIndex<string, ICommand> mIndex;

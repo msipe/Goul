@@ -31,12 +31,6 @@ namespace DocumentUploader.UnitTests.App {
       mApp.Execute("help");
     }
 
-    [Test]
-    public void TestExecuteWithInvalidValueDoesnotExecuteTheCommand() {
-      mIndex.NextExpectedKey = "unknown_command";
-      mApp.Execute("unknown_command");
-    }
-
     [SetUp]
     public void DoSetup() {
       mIndex = new StubIndex();

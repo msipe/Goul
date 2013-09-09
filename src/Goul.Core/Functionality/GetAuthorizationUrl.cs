@@ -15,8 +15,7 @@ namespace Goul.Core.Functionality {
     }
 
     private static IAuthorizationState GetState() {
-      var state = new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive"}) {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl)};
-      return state;
+      return new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive"}) {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl)};
     }
   }
 }
