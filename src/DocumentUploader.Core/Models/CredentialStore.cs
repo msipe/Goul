@@ -15,7 +15,7 @@ namespace DocumentUploader.Core.Models {
     }
 
     public void Update(Credentials credentials) {
-      mFile.WriteAllText(mPath, string.Format("{0}{1}{2}", credentials.ClientID, Environment.NewLine, credentials.ClientSecret));
+      mFile.WriteAllLines(mPath, string.Format("{0}{1}{2}", credentials.ClientID, Environment.NewLine, credentials.ClientSecret));
     }
 
     private readonly IFile mFile;

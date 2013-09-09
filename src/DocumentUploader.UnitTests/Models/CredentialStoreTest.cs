@@ -1,5 +1,4 @@
-﻿using System;
-using DocumentUploader.Core.Models;
+﻿using DocumentUploader.Core.Models;
 using Goul.Core.Tokens;
 using Moq;
 using NUnit.Framework;
@@ -18,7 +17,7 @@ namespace DocumentUploader.UnitTests.Models {
 
     [Test]
     public void TestThatUpdateChangesTheValuesOfTheFile() {
-      mFile.Setup(f => f.WriteAllText("credentials.txt", "1\r\n2"));
+      mFile.Setup(f => f.WriteAllLines("credentials.txt", "1\r\n2"));
       mStore.Update(new Credentials {ClientID = "1", ClientSecret = "2"});
     }
 
