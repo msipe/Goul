@@ -2,6 +2,7 @@
 using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
 using Goul.Core.Adapter;
+using SupaCharge.Core.Collections.Extensions;
 
 namespace DocumentUploader.Core.Command {
   public class UploadCommand : ICommand {
@@ -15,7 +16,7 @@ namespace DocumentUploader.Core.Command {
     public void Execute(params string[] args) {
       var foldersAndFile = args[2].Split(new[] {'\\'});
       var fileTitle = foldersAndFile.Last();
-      var folders = foldersAndFile.Where(f => f != fileTitle).ToArray();
+      var folders = foldersAndFile.Truncate(1).ToArray();
 
       mHandler.UploadFileWithFolder(args[1], fileTitle, folders, mCredentialStore.Get(), mRefreshStore.Get());
       mObserver.AddMessages("File uploaded");

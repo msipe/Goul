@@ -11,20 +11,47 @@ namespace DocumentUploader.UnitTests.Command {
   public class UploadCommandTest : DocumentUploaderBaseTestCase {
     [Test]
     public void TestUploadMessageIsSentWithNoFoldersAdded() {
-      mCredentialStore.Setup(r => r.Get()).Returns(new Credentials { ClientID = "1", ClientSecret = "2" });
-      mRefreshTokenStore.Setup(s => s.Get()).Returns(new RefreshToken {Token = "1"});
-      mHandler.Setup(h => h.UploadFileWithFolder("file", "fileTitle", It.Is<string[]>(a => AreEqual(a, new string[] {})), It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "1"}))));
+      var credentials = CA<Credentials>();
+      var refreshToken = CA<RefreshToken>();
+      mCredentialStore.Setup(r => r.Get()).Returns(credentials);
+      mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
+      mHandler.Setup(h => h.UploadFileWithFolder("file",
+                                                 "fileTitle", 
+                                                 new string[] {}, 
+                                                 credentials,
+                                                 refreshToken));
       mObserver.Setup(o => o.AddMessages("File uploaded"));
       mCommand.Execute("upload", "file", "fileTitle");
     }
 
     [Test]
     public void TestCommandWithFoldersAdded() {
-      mCredentialStore.Setup(c => c.Get()).Returns(new Credentials { ClientID = "1", ClientSecret = "2" });
-      mRefreshTokenStore.Setup(s => s.Get()).Returns(new RefreshToken {Token = "1"});
-      mHandler.Setup(h => h.UploadFileWithFolder("file", "fileTitle", It.Is<string[]>(a => AreEqual(a, new[] {"folder"})), It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "1"}))));
+      var credentials = CA<Credentials>();
+      var refreshToken = CA<RefreshToken>();
+      mCredentialStore.Setup(r => r.Get()).Returns(credentials);
+      mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
+      mHandler.Setup(h => h.UploadFileWithFolder("file",
+                                                 "fileTitle",
+                                                 new [] {"folder" },
+                                                 credentials,
+                                                 refreshToken));
       mObserver.Setup(o => o.AddMessages("File uploaded"));
       mCommand.Execute("upload", "file", @"folder\fileTitle");
+    }
+
+    [Test]
+    public void TestCommandWhereAFolderHasTheSameNameAsTheFile() {
+      var credentials = CA<Credentials>();
+      var refreshToken = CA<RefreshToken>();
+      mCredentialStore.Setup(r => r.Get()).Returns(credentials);
+      mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
+      mHandler.Setup(h => h.UploadFileWithFolder("file",
+                                                 "fileTitle",
+                                                new [] {"fileTitle", "folder"}, 
+                                                 credentials,
+                                                 refreshToken));
+      mObserver.Setup(o => o.AddMessages("File uploaded"));
+      mCommand.Execute("upload", "file", @"fileTitle\folder\fileTitle");
     }
 
     [SetUp]
