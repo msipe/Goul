@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
+using DocumentUploader.IntegrationTests.Infrastructure;
 using NUnit.Framework;
 
-namespace DocumentUploader.IntegrationTests.Infrastructure {
+namespace DocumentUploader.IntegrationTests {
   [SetUpFixture]
   public sealed class GlobalSetup {
     [SetUp]
