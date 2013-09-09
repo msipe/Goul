@@ -1,5 +1,4 @@
-﻿using System;
-using DocumentUploader.Core.App;
+﻿using DocumentUploader.Core.App;
 using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Observer;
@@ -13,7 +12,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   public class UnknownCommand : BaseTestCase {
     [Test]
     public void TestUnknownCommandDisplaysCorrectMessage() {
-      mApp.Execute("Invalid Command");
+      mApp.Execute("hyogdld");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Invalid Command")));
     }
 

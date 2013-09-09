@@ -7,7 +7,7 @@ namespace DocumentUploader.Core.Factory.Module {
       base.Load(builder);
 
       builder
-        .RegisterType<UploadCommand>()
+        .RegisterType<UnknownCommand>()
         .InstancePerLifetimeScope()
         .Keyed<ICommand>("unknown");
     }
