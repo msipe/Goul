@@ -1,5 +1,4 @@
-﻿using System;
-using DocumentUploader.Core.App;
+﻿using DocumentUploader.Core.App;
 using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Models;
@@ -80,7 +79,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
           Assert.That(mFileManager.ListAllFilesOnRootByTitle()[1], Is.EqualTo("MyFolder"));
           Assert.That(mFileManager.ListAllFilesOnRootByTitle()[2], Is.EqualTo("TestingFolder0"));
           Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(3));
-          
+
           var file = mFileManager.GetFileAtTheLastDirectory("MyFolder");
           var otherFile = mFileManager.GetFileAtTheLastDirectory("OtherFolder");
           Assert.That(mFileManager.GetFileMimeType(file), Is.EqualTo("application/vnd.google-apps.document"));

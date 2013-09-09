@@ -11,8 +11,8 @@ namespace DocumentUploader.UnitTests.Command {
   public class AuthorizeCommandTest : DocumentUploaderBaseTestCase {
     [Test]
     public void TestExecuteAddsOneCorrectMessageToTheObserver() {
-      mHandler.Setup(r => r.CreateRefreshToken(It.Is<Credentials>(c => AreEqual(c, new Credentials { ClientID = "1", ClientSecret = "2" })), "123")).Returns("123");
-      mCredentialStore.Setup(r => r.Get()).Returns(new Credentials { ClientID = "1", ClientSecret = "2" });
+      mHandler.Setup(r => r.CreateRefreshToken(It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), "123")).Returns("123");
+      mCredentialStore.Setup(r => r.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
       mRefreshTokenStore.Setup(s => s.Update(It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "123"}))));
       mObserver.Setup(o => o.AddMessages("Authorized"));
       mCommand.Execute("authorize", "123");

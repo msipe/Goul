@@ -16,8 +16,8 @@ namespace DocumentUploader.UnitTests.Command {
       mCredentialStore.Setup(r => r.Get()).Returns(credentials);
       mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
       mHandler.Setup(h => h.UploadFileWithFolder("file",
-                                                 "fileTitle", 
-                                                 new string[] {}, 
+                                                 "fileTitle",
+                                                 new string[] {},
                                                  credentials,
                                                  refreshToken));
       mObserver.Setup(o => o.AddMessages("File uploaded"));
@@ -32,7 +32,7 @@ namespace DocumentUploader.UnitTests.Command {
       mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
       mHandler.Setup(h => h.UploadFileWithFolder("file",
                                                  "fileTitle",
-                                                 new [] {"folder" },
+                                                 new[] {"folder"},
                                                  credentials,
                                                  refreshToken));
       mObserver.Setup(o => o.AddMessages("File uploaded"));
@@ -47,7 +47,7 @@ namespace DocumentUploader.UnitTests.Command {
       mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
       mHandler.Setup(h => h.UploadFileWithFolder("file",
                                                  "fileTitle",
-                                                new [] {"fileTitle", "folder"}, 
+                                                 new[] {"fileTitle", "folder"},
                                                  credentials,
                                                  refreshToken));
       mObserver.Setup(o => o.AddMessages("File uploaded"));
@@ -62,7 +62,7 @@ namespace DocumentUploader.UnitTests.Command {
       mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
       mHandler.Setup(h => h.UploadFileWithFolder("file",
                                                  "fileTitle",
-                                                new[] { "folder1", "folder2", "folder3" },
+                                                 new[] {"folder1", "folder2", "folder3"},
                                                  credentials,
                                                  refreshToken));
       mObserver.Setup(o => o.AddMessages("File uploaded"));
@@ -77,7 +77,7 @@ namespace DocumentUploader.UnitTests.Command {
       mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
       mHandler.Setup(h => h.UploadFileWithFolder("file",
                                                  "fileTitle",
-                                                 new[] { ""},
+                                                 new[] {""},
                                                  credentials,
                                                  refreshToken));
       mObserver.Setup(o => o.AddMessages("File uploaded"));

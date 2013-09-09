@@ -15,7 +15,7 @@ namespace DocumentUploader.Core.Command {
                             "getauthorizationurl | Retrieves a url to the Google authorization process, based on the given credentials",
                             "authorize x AuthorizationCode x | Creates a refresh token based on the auth code retrieved from the 'getauthorizationurl",
                             "upload xPathOfTheFileToUploadx x TitleOfTheFileOnGoogle x | Uploads a file from the given path, to the bound Google Account, with the given title "
-                            );
+        );
     }
 
     private readonly IMessageObserver mObserver;

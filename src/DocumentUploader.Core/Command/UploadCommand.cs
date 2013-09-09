@@ -16,7 +16,7 @@ namespace DocumentUploader.Core.Command {
     public void Execute(params string[] args) {
       //args[2].TrimStart('\\');
       var foldersAndFile = args[2].Split(new[] {'\\'});
-      
+
       var fileTitle = foldersAndFile.Last();
       var folders = foldersAndFile.Truncate(1).ToArray();
 

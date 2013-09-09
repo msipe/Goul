@@ -45,7 +45,7 @@ namespace Goul.Core.Functionality {
       var byteArray = System.IO.File.ReadAllBytes(path);
       var stream = new MemoryStream(byteArray);
 
-      var request = mService.Files.Insert(file, stream , DetermineContentType(path));
+      var request = mService.Files.Insert(file, stream, DetermineContentType(path));
       request.Convert = true;
       request.Upload();
     }
@@ -60,9 +60,9 @@ namespace Goul.Core.Functionality {
         var fileToCheck = mService.Files.Get(children[x].Id).Fetch();
 
         if (fileToCheck.Title == folderTitleToCheckFor && fileToCheck.MimeType == "application/vnd.google-apps.folder")
-          return new FolderQuery { Exists = true, Index = x };
+          return new FolderQuery {Exists = true, Index = x};
       }
-      return new FolderQuery { Exists = false, Index = 0 };
+      return new FolderQuery {Exists = false, Index = 0};
     }
 
     public File ReturnMatchingFolder(int indexToGet, string parentId) {
