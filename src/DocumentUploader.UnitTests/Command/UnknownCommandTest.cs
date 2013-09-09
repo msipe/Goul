@@ -8,13 +8,14 @@ namespace DocumentUploader.UnitTests.Command {
   public class UnknownCommandTest:DocumentUploaderBaseTestCase {
     [Test]
     public void TestUnkownCommandSendsTheUnknownMessage() {
-     
-     
+      mObserver.Setup(o => o.AddMessages("Invalid Command"));
+      mCommand.Execute();
+
     }
 
     [SetUp]
     public void DoSetup() {
-      mObserver = Mok<IMessageObserver>();
+     mObserver = Mok<IMessageObserver>();
      mCommand = new UnknownCommand(mObserver.Object);
     }
 

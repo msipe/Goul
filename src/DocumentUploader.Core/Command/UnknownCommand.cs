@@ -7,7 +7,7 @@ namespace DocumentUploader.Core.Command {
     }
 
     public void Execute(params string[] args) {
-
+      mObserver.AddMessages("Invalid Command");
     }
 
     private readonly IMessageObserver mObserver;
