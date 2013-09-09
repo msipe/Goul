@@ -49,6 +49,7 @@
     <Compile Include="App\IApp.cs" />
     <Compile Include="Command\AuthorizeCommand.cs" />
     <Compile Include="Command\ClearCredentialsCommand.cs" />
+    <Compile Include="Command\UnknownCommand.cs" />
     <Compile Include="Command\GetAuthorizationUrlCommand.cs" />
     <Compile Include="Command\ListCredentialsCommand.cs" />
     <Compile Include="Command\SetCredentialsCommand.cs" />
