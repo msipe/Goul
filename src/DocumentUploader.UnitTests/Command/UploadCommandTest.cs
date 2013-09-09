@@ -69,6 +69,21 @@ namespace DocumentUploader.UnitTests.Command {
       mCommand.Execute("upload", "file", @"folder1\folder2\folder3\fileTitle");
     }
 
+    [Test]
+    public void TestCommandWhereTheFileNameIsPrefixedWithASlash() {
+      var credentials = CA<Credentials>();
+      var refreshToken = CA<RefreshToken>();
+      mCredentialStore.Setup(r => r.Get()).Returns(credentials);
+      mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
+      mHandler.Setup(h => h.UploadFileWithFolder("file",
+                                                 "fileTitle",
+                                                 new[] { ""},
+                                                 credentials,
+                                                 refreshToken));
+      mObserver.Setup(o => o.AddMessages("File uploaded"));
+      mCommand.Execute("upload", "file", @"\fileTitle");
+    }
+
     [SetUp]
     public void DoSetup() {
       mObserver = Mok<IMessageObserver>();
