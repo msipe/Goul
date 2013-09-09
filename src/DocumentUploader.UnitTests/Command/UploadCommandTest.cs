@@ -54,6 +54,21 @@ namespace DocumentUploader.UnitTests.Command {
       mCommand.Execute("upload", "file", @"fileTitle\folder\fileTitle");
     }
 
+    [Test]
+    public void TestCommandWhereThereAre3Folders() {
+      var credentials = CA<Credentials>();
+      var refreshToken = CA<RefreshToken>();
+      mCredentialStore.Setup(r => r.Get()).Returns(credentials);
+      mRefreshTokenStore.Setup(s => s.Get()).Returns(refreshToken);
+      mHandler.Setup(h => h.UploadFileWithFolder("file",
+                                                 "fileTitle",
+                                                new[] { "folder1", "folder2", "folder3" },
+                                                 credentials,
+                                                 refreshToken));
+      mObserver.Setup(o => o.AddMessages("File uploaded"));
+      mCommand.Execute("upload", "file", @"folder1\folder2\folder3\fileTitle");
+    }
+
     [SetUp]
     public void DoSetup() {
       mObserver = Mok<IMessageObserver>();
