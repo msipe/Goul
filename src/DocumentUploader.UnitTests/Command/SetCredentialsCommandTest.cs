@@ -10,7 +10,8 @@ namespace DocumentUploader.UnitTests.Command {
   public class SetCredentialsCommandTest : DocumentUploaderBaseTestCase {
     [Test]
     public void TestThatCredentialsAreSetWhenThereAre3Args() {
-      mStorage.Setup(s => s.Update(It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"}))));
+      var credentials = CA<Credentials>();
+      mStorage.Setup(s => s.Update(credentials));
       mObserver.Setup(o => o.AddMessages("Credentials Set"));
       mCommand.Execute("setcredentials", "1", "2");
     }

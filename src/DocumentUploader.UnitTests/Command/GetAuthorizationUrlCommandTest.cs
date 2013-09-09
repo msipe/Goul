@@ -13,7 +13,7 @@ namespace DocumentUploader.UnitTests.Command {
     public void TestGetAuthUrlCommandWorks() {
       var credentials = CA<Credentials>();
       mStore.Setup(o => o.Get()).Returns(credentials);
-      mHandler.Setup(o => o.GetAuthUrl(It.Is<Credentials>(c => AreEqual(c, credentials)))).Returns("authorization url");
+      mHandler.Setup(o => o.GetAuthUrl(credentials)).Returns("authorization url");
       mObserver.Setup(o => o.AddMessages("authorization url"));
       mCommand.Execute();
     }
