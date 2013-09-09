@@ -10,9 +10,9 @@ namespace DocumentUploader.UnitTests.Command {
   public class ListCredentialsCommandTest : BaseTestCase {
     [Test]
     public void TestThatListDisplays3Values() {
-      mObserver.Setup(o => o.AddMessages("1", "2"));
       mFile.Setup(f => f.Exists("credentials.txt")).Returns(true);
       mFile.Setup(f => f.ReadAllLines("credentials.txt")).Returns(new[] {"1", "2"});
+      mObserver.Setup(o => o.AddMessages("1", "2"));
       mCommand.Execute("listcredentials");
     }
 

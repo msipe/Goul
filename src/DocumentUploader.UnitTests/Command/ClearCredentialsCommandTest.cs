@@ -10,16 +10,16 @@ namespace DocumentUploader.UnitTests.Command {
   public class ClearCredentialsCommandTest : BaseTestCase {
     [Test]
     public void TestThatClearDisplaysTheCorrectMessageOnSuccesfulCompletion() {
-      mObserver.Setup(o => o.AddMessages("Credentials Cleared"));
       mFile.Setup(f => f.Exists("credentials.txt")).Returns(true);
       mFile.Setup(f => f.Delete("credentials.txt"));
+      mObserver.Setup(o => o.AddMessages("Credentials Cleared"));
       mCommand.Execute("clearcredentials");
     }
 
     [Test]
     public void TestCredentialsAreNotClearedWhenTheFileIsMissing() {
-      mObserver.Setup(o => o.AddMessages("Could not find the Credentials file"));
       mFile.Setup(f => f.Exists("credentials.txt")).Returns(false);
+      mObserver.Setup(o => o.AddMessages("Could not find the Credentials file"));
       mCommand.Execute("clearcredentials");
     }
 
