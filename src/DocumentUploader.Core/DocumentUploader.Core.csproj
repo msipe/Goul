@@ -60,6 +60,7 @@
     <Compile Include="Factory\Module\AppModule.cs" />
     <Compile Include="Factory\Module\ClearCommandModule.cs" />
     <Compile Include="Factory\Module\AuthorizeCommandModule.cs" />
+    <Compile Include="Factory\Module\UnknownCommandModule.cs" />
     <Compile Include="Factory\Module\UploadCommandModule.cs" />
     <Compile Include="Factory\Module\RefreshTokenStoreModule.cs" />
     <Compile Include="Factory\Module\GetAuthorizationUrlCommandModule.cs" />
