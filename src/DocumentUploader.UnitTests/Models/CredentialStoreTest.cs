@@ -18,7 +18,7 @@ namespace DocumentUploader.UnitTests.Models {
 
     [Test]
     public void TestThatUpdateChangesTheValuesOfTheFile() {
-      mFile.Setup(f => f.WriteAllText("credentials.txt", string.Format("{0}{1}{2}", "1", Environment.NewLine, "2")));
+      mFile.Setup(f => f.WriteAllText("credentials.txt", "1\r\n2"));
       mStore.Update(new Credentials {ClientID = "1", ClientSecret = "2"});
     }
 
